@@ -8,13 +8,14 @@ class AutoComplete extends Component {
 
         this.state = {
             term: '',
-            allResults: [
-                'aardvark',
-                'albatross',
-                'anteater',
-                'antelope',
-                'armadillo'
-            ]
+            allResults: props.words
+            // allResults: [
+            //     'aardvark',
+            //     'albatross',
+            //     'anteater',
+            //     'antelope',
+            //     'armadillo'
+            // ]
         }
     }
 
