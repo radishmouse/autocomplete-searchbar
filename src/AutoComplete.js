@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import SearchBar from './SearchBar';
+import SearchResults from './SearchResults';
 
 class AutoComplete extends Component {
     constructor(props) {
@@ -25,6 +26,9 @@ class AutoComplete extends Component {
                     term={this.state.term}
                     handleInput={this._setTerm}
                 />
+                <SearchResults 
+                    results={this._getFilteredResults()}
+                />
             </div>
         );
     }
@@ -36,9 +40,13 @@ class AutoComplete extends Component {
     }
 
     _getFilteredResults = () => {
-        return this.state.allResults.filter(word => {
-            return word.startsWith(this.state.term);
-        });
+        if (this.state.term.length === 0) {
+            return [];
+        } else {
+            return this.state.allResults.filter(word => {
+                return word.startsWith(this.state.term);
+            });
+        }
     }
 }
 
